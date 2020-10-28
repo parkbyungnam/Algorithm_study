@@ -1,3 +1,5 @@
+#BFS using Queue
+
 from collections import deque
 
 def bfs(graph, start, visited):
