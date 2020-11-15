@@ -39,3 +39,20 @@ def solution():
     print(result)
 
 solution()
+
+#타인 풀이
+import sys
+In = sys.stdin.readline
+
+def main():
+    n = int(In())
+    meetings = [(*map(int, In().split()),) for _ in range(n)]
+    meetings.sort()
+    n, st = 0, float('inf')
+    for m in reversed(meetings):
+        if m[1] <= st:
+            st = m[0]
+            n += 1
+    print(n)
+
+main()
