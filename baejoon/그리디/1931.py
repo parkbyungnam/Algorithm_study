@@ -40,6 +40,7 @@ def solution():
 
 solution()
 
+
 #타인 풀이
 import sys
 In = sys.stdin.readline
