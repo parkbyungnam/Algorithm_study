@@ -1,5 +1,3 @@
-import math
-
 for _ in range(int(input())):
     myDict = dict()
     for _ in range(int(input())):
@@ -8,6 +6,9 @@ for _ in range(int(input())):
             myDict[key] = 1
         else:
             myDict[key]+=1
-    a = len(myDict.keys())
-    b = sum(list(myDict.values()))
-    print(math.factorial(a)*math.factorial(b)-1)
+    mylist = list(myDict.values())
+    mylist = list(map(lambda x: x+1,mylist))
+    result = 1
+    for my in mylist:
+        result *= my
+    print(result-1)
