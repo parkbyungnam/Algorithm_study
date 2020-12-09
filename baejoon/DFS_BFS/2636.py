@@ -1,10 +1,13 @@
 from collections import deque
+import copy
 
 M, N  = map(int,input().split())
 graph = []
 
 for _ in range(M):
     graph.append(list(map(int,input().split())))
+
+visited = copy.deepcopy(graph)
 '''
 where_is_1 = []
 for i,grap in enumerate(graph):
@@ -13,15 +16,14 @@ for i,grap in enumerate(graph):
             where_is_1.append([i,j])
 '''
 def bfs():
-    global graph
-    visited = graph.copy()
+    global graph, visited
     queue = deque()
     for i in range(M):
         queue.append((i,0))
-        queue.append((i,11))
+        queue.append((i,N-1))
     for j in range(N):
         queue.append((0,j))
-        queue.append((12,j))
+        queue.append((M-1,j))
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
     while queue:
@@ -36,6 +38,7 @@ def bfs():
                 graph[nx][ny] = graph[x][y] + 1
                 queue.append((nx,ny))
             elif visited[nx][ny] == 0:
+                visited[nx][ny] = -1
                 queue.append((nx,ny))
 
 bfs()
