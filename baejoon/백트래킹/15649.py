@@ -61,6 +61,32 @@ def dfs(cnt):
         
 dfs(0)
 
+#타인풀이1.5
+
+n, m = map(int, input().split())    # n까지 m개
+check=[0 for _ in range(n+1)]
+result=[0 for _ in range(m)]
+ 
+def sequence(index,n,m):
+    if index==m:
+        for i in range(m):
+            print(result[i], end=' ')
+        print()
+        return
+ 
+    for i in range(1,n+1):
+        if check[i]==1:#이전에 썻다면
+            continue
+        result[index]=i #해당위치에 넣어줌
+        check[i]=1  #들어간거 체크표시
+        sequence(index+1,n,m)
+        check[i]=0 #다음수로 넘어가기전에 초기화
+ 
+ 
+sequence(0,n,m)
+
+
+
 
 
 
