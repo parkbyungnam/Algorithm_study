@@ -19,7 +19,7 @@ def fibo1(m):
         my1 = 1
         past = 1
         for _ in range(m-2):
-            temp = past
+            temp = my1
             my1 += past
             past = temp
     return my1
@@ -27,3 +27,6 @@ def fibo1(m):
 def solution(n):
     print(fibo0(n),fibo1(n))
 
+testCase = int(input())
+for _ in range(testCase):
+    solution(int(input()))
