@@ -21,3 +21,32 @@ print(mylist[n//2])
 
 #범위 출력
 print(mylist[-1]-mylist[0])
+
+
+
+#내풀이
+
+from collections import Counter
+import sys
+
+testCase = int(sys.stdin.readline())
+mylist = []
+for _ in range(testCase):
+    mylist.append(int(sys.stdin.readline()))
+
+mylist.sort()
+print(round(sum(mylist)/testCase)) #산술평균
+print(mylist[testCase//2]) #중앙값
+
+#최빈값
+mycount = Counter(mylist).most_common(2)
+if len(mycount)==1:
+    print(mycount[0][0])
+else:
+    if mycount[0][1]==mycount[1][1]:
+        print(mycount[1][0])
+    else:
+        print(mycount[0][0])
+
+print(mylist[-1]-mylist[0]) #범위
+
