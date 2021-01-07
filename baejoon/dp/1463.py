@@ -25,7 +25,7 @@ while n!=1:
 print(count)
 
 
-
+'''
 
 
 1
@@ -83,3 +83,4 @@ print(count)
 
 20 10 9 3 1
 
+'''
