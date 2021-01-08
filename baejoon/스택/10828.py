@@ -47,8 +47,7 @@ for line in stdin:
         if stack: print(stack[-1])
         else: print(-1)
 
-#타인 코드
-# 2
+#타인 코드2
 import sys
 
 # 정수 X를 스택에 넣는 연산이다.
@@ -76,11 +75,11 @@ def empty():
 def top():
     return stack[-1] if stack else -1
 
-N = int(sys.stdin.readline().rstrip())
+N = int(input().rstrip())
 stack = []
 
 for _ in range(N):
-    input_split = sys.stdin.readline().rstrip().split()
+    input_split = input().rstrip().split()
 
     order = input_split[0]
 
