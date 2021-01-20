@@ -9,10 +9,7 @@ for _ in range(testCase):
     arrayLen = int(input()) #배열 크기값
 
     if arrayLen: #배열 크기가 0이 아닐 때
-        if arrayLen == 1:
-            array = list(input().strip('[]'))
-        else:
-            array = list(map(int,input().strip('[]').split(',')))
+        array = list(map(int,input().strip('[]').split(',')))
         for f in inputFunction:
             if f=='R': #뒤집기
                 array.reverse()
