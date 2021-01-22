@@ -1,7 +1,7 @@
 #import sys
 
 #input = sys.stdin.readline
-
+'''
 testCase = int(input())
 for _ in range(testCase):
     flag = True #error 판단 깃발
@@ -31,7 +31,7 @@ for _ in range(testCase):
         else:
             print(temp)
 
-
+'''
 
 import sys
 
@@ -39,7 +39,8 @@ input = sys.stdin.readline
 
 testCase = int(input())
 for _ in range(testCase):
-    flag = True #error 판단 깃발
+    isError = False #error 판단 깃발
+    isReverse = False #리버스 판단 유무
     inputFunction = input() #함수 리스트
     arrayLen = int(input().rstrip()) #배열 크기값
 
@@ -47,17 +48,22 @@ for _ in range(testCase):
         array = list(map(int,input().rstrip()[1:-1].split(',')))
         for f in inputFunction:
             if f=='R': #뒤집기
-                array.reverse()
+                isReverse=False if isReverse else True #리버스 체크
             elif f=='D': #popleft 하기
-                if array:
-                    del(array[0])
+                if array: #빈 리스트 아닐 시
+                    if isReverse:
+                        del(array[-1])
+                    else:
+                        del(array[0])
                 else: #빈 리스트에서 추출 시 에러
-                    flag = False
+                    isError = True
                     break
-        if flag == True: #정상 작동 했을 때
-            print(array)
-        else: #빈리스트에서 추출했을 때 
+        if isError: #빈리스트에서 추출했을 때
             print('error')
+        else:   #정상 작동 했을 때
+            if isReverse:
+                array.reverse()
+            print(array)
 
     else: #배열 크기가 0일 때
         temp = input() #리스트 입력값 받기 []
