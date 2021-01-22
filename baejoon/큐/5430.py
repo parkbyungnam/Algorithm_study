@@ -63,7 +63,10 @@ for _ in range(testCase):
         else:   #정상 작동 했을 때
             if isReverse:
                 array.reverse()
-            print(array)
+            print('[',end='')
+            for arr in array[:-1]:
+                print('{0},'.format(arr), end='')
+            print('{0}]'.format(array[-1]))
 
     else: #배열 크기가 0일 때
         temp = input() #리스트 입력값 받기 []
