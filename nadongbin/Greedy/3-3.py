@@ -21,3 +21,15 @@ for i in range(n):
     result = max(min_value, result)
 
 print(result)
+
+
+#다시 풀어보기
+N,M = map(int,input().split())
+mylist=[list(map(int, input().split())) for _ in range(N)]
+
+result = 0
+for my in mylist:
+    my.sort()
+    result = max(result,my[0])
+
+print(result)

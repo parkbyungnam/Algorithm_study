@@ -73,3 +73,16 @@ print(dp[n])
 20 10 9 3 1
 
 '''
+
+
+def sort_list(lista,cue):
+    if cue=='오름차순':
+        lista.sort()
+    elif cue=='내림차순':
+        lista.reverse()
+
+lista=[0,2,1,4]
+sort_list(lista,'오름차순')
+print(lista) # 0 1 2 4
+sort_list(lista,'내림차순')
+print(lista) # 4 2 1 0
