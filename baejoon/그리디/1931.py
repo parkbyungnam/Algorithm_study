@@ -57,3 +57,46 @@ def main():
     print(n)
 
 main()
+
+
+
+
+#다시 풀어보기
+N = int(input())
+mylist = []
+for _ in range(N):
+    mylist.append(list(map(int,input().split())))
+#리스트 컴프리핸션
+# mylist = [list(map(int,input().split())) for _ in range(N)]
+
+mylist.sort(key=lambda x:(x[1],x[0]))
+start = 0
+result = 0
+
+for schedule in mylist:
+    if schedule[0] >= start:
+        start = schedule[1]
+        result += 1
+
+print(result)
+
+
+
+#다시 풀어보기
+N = int(input())
+mylist = []
+for _ in range(N):
+    mylist.append(list(map(int,input().split())))
+#리스트 컴프리핸션
+# mylist = [list(map(int,input().split())) for _ in range(N)]
+
+mylist.sort(key=lambda x : (x[1],x[0]))
+start = 0
+result = 0
+
+for schedule in mylist:
+    if schedule[0] >= start:
+        start = schedule[1]
+        result += 1
+
+print(result)

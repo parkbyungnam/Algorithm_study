@@ -20,6 +20,56 @@ solution(connection,1,virus)
 print(virus.count(True)-1)
 
 
+#------------------------------------------------------------------#
+
+
+#다시 풀어보기
+from collections import deque
+
+computer_num = int(input())
+edge_num = int(input())
+graph = [[] for _ in range(computer_num+1)]
+for _ in range(edge_num):
+    start, end = map(int,input().split())
+    graph[start].append(end)
+    graph[end].append(start)
+
+dfs_visited = [False] * (computer_num+1)
+bfs_visited = [False] * (computer_num+1)
+
+cnt = -1
+
+def solution1_dfs(start):
+    dfs_visited[start] = True
+    global cnt
+    cnt += 1
+    for i in graph[start]:
+        if not dfs_visited[i]:
+            solution1_dfs(i)
+
+
+def solution2_bfs(start):
+    queue = deque([start])
+    bfs_visited[start] = True
+    count = -1
+    while queue:
+        next_computer=queue.popleft()
+        count += 1
+        for i in graph[next_computer]:
+            if not bfs_visited[i]:
+                queue.append(i)
+                bfs_visited[i]=True
+    return count
+
+
+solution1_dfs(1)
+print(cnt)
+print(solution2_bfs(1))
+
+
+
+
+
 #다른 사람 풀이
 import sys
 def dfs(matrix, start):

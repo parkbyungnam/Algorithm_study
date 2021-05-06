@@ -18,3 +18,17 @@ for x in l:
     cur += x
     total += cur
 print(total)
+
+
+
+#다시 풀어보기
+N = int(input())
+mylist = list(map(int,input().split()))
+
+mylist.sort(reverse=True)
+result = 0
+
+for i,human in enumerate(mylist):
+    result += human*(i+1)
+
+print(result)

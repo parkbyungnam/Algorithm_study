@@ -47,3 +47,14 @@ print(s)
 #타인 코드
 e = [sum(map(int, x.split('+'))) for x in input().split('-')]
 print(e[0]-sum(e[1:]))
+
+
+#다시 풀어보기
+data = input().split('-')
+result = 0
+for num in data[0].split('+'):
+    result += int(num)
+for plus in data[1:]:
+    for num in plus.split("+"):
+        result -= int(num)
+print(result)

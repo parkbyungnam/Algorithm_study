@@ -34,3 +34,20 @@ for i in range(totalCity-1):
     result += currentPrice*roads[i]
 
 print(result)
+
+
+
+
+#다시 풀어보기
+N = int(input())
+roads = list(map(int,input().split()))
+prices = list(map(int,input().split()))
+result = 0
+minPrice = prices[0]
+
+for i in range(N-1):
+    if minPrice > prices[i]:
+        minPrice=prices[i]
+    result += minPrice*roads[i]
+
+print(result)
