@@ -13,7 +13,46 @@ graph = [
 total = 0
 cnt_arr = []
 '''
+#다시 풀기
+N = int(input())
+graphs = [list(map(int,input())) for _ in range(N)]
 
+dx = [1, -1, 0, 0]
+dy = [0, 0, -1, 1]
+
+cnt = 0
+result = []
+
+def dfs(x,y):
+    global cnt
+    if x<0 or y<0 or x>=N or y>=N:
+        return False
+    if graphs[x][y]:
+        cnt += 1
+        graphs[x][y]=0
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i]
+            dfs(nx,ny)
+        return True
+    return False
+
+for i in range(N):
+    for j in range(N):
+        if graphs[i][j]:
+            dfs(i,j)
+            result.append(cnt)
+            cnt = 0
+
+result.sort()
+
+print(len(result))
+for answer in result:
+    print(answer)
+
+
+
+#---------------------------------------------------------#
+#첫번째 풀이
 N = int(input())
 graph = []
 for _ in range(N):
