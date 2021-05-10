@@ -1,3 +1,42 @@
+#ㄷㅏ시 풀어보기
+from collections import deque
+
+m,n = map(int,input().split())
+graph = [list(map(int,input().split())) for _ in range(n)] #토마토 판 입력
+visited = [[False]*m for _ in range(n)] #방문했는지, 방문x=F, 방문ㅇ=T
+dx, dy = [1,-1,0,0], [0,0,-1,1]
+
+def bfs():
+    queue = deque()
+    days = 0 #걸리는 기간
+    for i in range(n):
+        for j in range(m):
+            if graph[i][j] == 1: #토마토 있는 공간이라면
+                queue.append([i,j]) #큐에 추가
+                visited[i][j]=True #토마토 있는 공간에는 방문할 필요가 없으므로
+    while queue:
+        x,y = queue.popleft()
+        for i in range(4):
+            nx, ny = x+dx[i], y+dy[i]
+            if 0<=nx<n and 0<=ny<m: #동서남북 범위 조건
+                if not visited[nx][ny] and graph[nx][ny] == 0: #방문x,안익은토마토ㅇ
+                    graph[nx][ny] = graph[x][y] + 1
+                    visited[nx][ny] = True
+                    queue.append([nx,ny])
+    for gra in graph:
+        for tomato in gra:
+            if not tomato:
+                return -1
+            else:
+                days = max(days,tomato)
+    return days-1
+
+print(bfs())
+
+            
+    
+
+#------------------------------------------------------------------#
 from collections import deque
 
 M,N = map(int,input().split())
