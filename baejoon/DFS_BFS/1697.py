@@ -13,6 +13,7 @@ def dfs():
     while not visited[k] and queue:
         move = queue.popleft()
         for i in range(3):
+            if 0<=move<100001:
                 next_move = move*dy[i] + dx[i]
                 if 0<=next_move<100001 and not visited[next_move]:
                     visited[next_move] = visited[move] + 1
