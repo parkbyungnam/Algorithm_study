@@ -1,3 +1,29 @@
+#다시 풀어보기
+from collections import deque
+
+n,k = map(int,input().split())
+
+def dfs():
+    visited = [0]*100001 #방문했는지 확인
+    dx = [-1,1,0]
+    dy = [1,1,2]
+    queue = deque([n])
+    if n==k:
+        return 0
+    while not visited[k] and queue:
+        move = queue.popleft()
+        for i in range(3):
+                next_move = move*dy[i] + dx[i]
+                if 0<=next_move<100001 and not visited[next_move]:
+                    visited[next_move] = visited[move] + 1
+                    queue.append(next_move)
+    return visited[k]
+
+print(dfs())
+
+
+#------------------------------------------------------------#
+
 from collections import deque
 N, K = map(int,input().split())
 limited = 100001

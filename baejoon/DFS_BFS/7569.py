@@ -1,4 +1,52 @@
 from collections import deque
+import sys
+
+input = sys.stdin.readline
+
+m,n,h = map(int,input().split())
+graph = [[list(map(int,input().split())) for _ in range(n)] for _ in range(h)]
+tomato_list = [] #익은 토마토 리스트
+nonto_cnt = 0 #안익은 토마토 카운트
+dx,dy,dz = [-1,1,0,0,0,0],[0,0,-1,1,0,0],[0,0,0,0,-1,1] #이동
+
+for a in range(h):
+    for b in range(n):
+        for c in range(m):
+            if not graph[a][b][c]:
+                nonto_cnt += 1 #안익은 토마토 갯수 세기
+            elif graph[a][b][c]==1:
+                tomato_list.append([a,b,c]) #익은 토마토 리스트 넣기
+                
+def bfs():
+    days = 0
+    global nonto_cnt
+    queue = deque(tomato_list)
+    while queue and nonto_cnt:
+        x,y,z = queue.popleft()
+        for i in range(6):
+            nx,ny,nz = x+dx[i],y+dy[i],z+dz[i]
+            if 0<=nx<h and 0<=ny<n and 0<=nz<m:
+                if not graph[nx][ny][nz]:
+                    graph[nx][ny][nz]=graph[x][y][z]+1
+                    days = max(graph[nx][ny][nz], days)
+                    queue.append([nx,ny,nz])
+                    nonto_cnt -= 1
+    if nonto_cnt: #안익은 토마토가 남아있다면
+        return -1
+    if not days:
+        return 0
+    return days-1
+
+print(bfs())
+
+
+
+
+
+
+
+#--------------------------------------------#
+from collections import deque
 
 M,N,H = map(int,input().split())
 
