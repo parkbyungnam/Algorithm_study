@@ -19,3 +19,28 @@ for line in f:
 
 for i in range(1, 10001):
     print(f'{i}\n' * li[i], end='')
+
+#----
+
+
+n=int(input())
+mylist=list()
+for _ in range(n):
+    mylist.append(int(input()))
+
+mylist.sort()
+
+for my in mylist:
+    print(my)
+
+#----
+
+
+n = int(input())
+mylist=[0]*10001
+
+for _ in range(n):
+    mylist[int(input())]+=1
+
+for i,my in enumerate(mylist):
+    print(f"{i}\n"*my,end='')
