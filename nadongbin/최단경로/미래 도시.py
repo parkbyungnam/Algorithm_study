@@ -46,3 +46,4 @@ def solution(start):
         while q:
             dist,now_node=heapq.heappop(q)
             if distance[now_node]<dist:
+                r
